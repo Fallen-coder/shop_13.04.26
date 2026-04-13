@@ -57,7 +57,8 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 INSERT INTO customers (id, Fname,Lname, email, born_at, points) VALUES
 (1, 'Barbara',' MacCaffrey', 'babara@gmail.com', '1986-03-28', 0),
 (2, 'Alex',' Dufvey', 'Alex@gmail.com', '1986-03-28', 0),
-(3, 'Epstein',' Montvids', 'Epstein@gmail.com', '1986-03-28', 0);
+(3, 'Epstein',' Montvids', 'Epstein@gmail.com', '1986-03-28', 0),
+(4, 'Rodolf',' Reindier', 'Rodolf@gmail.com', '1999-03-28', 0);
 
 
 INSERT INTO orders (id, customers_id, order_date, status, arival_date) VALUES
