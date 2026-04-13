@@ -7,13 +7,13 @@ class CustomerController
     concat(Fname,Lname) as name, c.email, c.born_at, c.points
     FROM customers c ;";
 
-    $result = $conn->query($query);
+    $result = DB::query($query);
 
     $currentCustomer = null;
 
     echo "<ol>";
-    if ($result->num_rows>0){
-        while($row = $result->fetch_assoc())
+
+        foreach ($result as $row) 
         {
 
             //iterate over all the fields
@@ -25,11 +25,7 @@ class CustomerController
             " ||| points: " . $row["points"].
             "</li>"."<br>";
         }
-    }
-    else
-    {
-        echo "no customers";
-    }
+
     echo "</ol>";
 
  }
