@@ -1,10 +1,10 @@
 <?php
 class CustomerController
 {
- public static function index($conn){
+ public static function index(){
     $query = "SELECT
     c.id AS customer_id,
-    concat(Fname,Lname) as name, c.email, c.born_at, c.points
+    concat(Fname, ' ',Lname) as name, c.email, c.born_at, c.points
     FROM customers c ;";
 
     $result = DB::query($query);
@@ -13,7 +13,7 @@ class CustomerController
 
     echo "<ol>";
 
-        foreach ($result as $row) 
+        foreach ($result as $row)
         {
 
             //iterate over all the fields
