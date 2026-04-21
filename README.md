@@ -19,19 +19,19 @@ A professional PHP MVC application for managing customer directories and order t
 ## 📦 Setup & Installation
 1. **Clone the repository**:
    ```bash
-   git clone [your-repo-url]
-
+   git clone https://github.com/Fallen-coder/shop_13.04.26
+    ```
 
 2.**Install dependencies:**:
 
     ```bash
     composer install
-
+    ```
 3.**Environment Configuration**:
 
     ```bash
     cp .env.exsmple .env
-
+    ```
 Define your DB_HOST, DB_NAME, DB_USER, and DB_PASS.
 
 4.**Database Setup**:
@@ -44,3 +44,4 @@ Point your local server to the public/ directory:
 
     ```bash
     php -S localhost:8000 -t public
+    ```
