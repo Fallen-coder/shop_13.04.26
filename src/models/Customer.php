@@ -1,18 +1,13 @@
 <?php
 class Customer {
-    public static function getAllWithOrders() {
-        $query = "SELECT
-            c.id AS customer_id,
-            concat(c.Fname, ' ', c.Lname) as name,
-            c.email,
-            o.id AS order_id,
-            o.order_date,
-            o.status,
-            o.arival_date
-            FROM customers c
-            LEFT JOIN orders o ON c.id = o.customers_id
-            ORDER BY c.id ASC, o.order_date DESC;";
+    public static function all() {
+        return DB::query("SELECT c.id, concat(Fname, ' ', Lname) as name, email FROM customers c");
+    }
 
-        return DB::query($query);
+    public static function allWithOrders() {
+        return DB::query("SELECT c.id as customer_id, concat(Fname, ' ', Lname) as name, email,
+                          o.id as order_id, o.status, o.order_date as date
+                          FROM customers c
+                          LEFT JOIN orders o ON c.id = o.customers_id");
     }
 }

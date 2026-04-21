@@ -1,66 +1,14 @@
-/* Fix for the gradient not filling the screen */
-html {
-    height: 100%;
-}
-
+html, body { min-height: 100vh; margin: 0; }
 body {
-    margin: 0;
-    min-height: 100vh;
-    font-family: 'Segoe UI', sans-serif;
-    /* Rich multi-point gradient */
-    background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+    font-family: sans-serif;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
     background-attachment: fixed;
-    background-size: cover;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 40px 20px;
-    color: white;
+    display: flex; flex-direction: column; align-items: center; padding: 50px; color: white;
 }
-
-.container {
-    width: 100%;
-    max-width: 1100px;
-}
-
-table {
-    width: 100%;
-    background: rgba(255, 255, 255, 0.95);
-    color: #333;
-    border-radius: 15px;
-    overflow: hidden;
-    border-collapse: collapse;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-}
-
-th {
-    background: #222;
-    color: white;
-    padding: 20px;
-    text-align: left;
-}
-
-td {
-    padding: 15px 20px;
-    border-bottom: 1px solid #ddd;
-}
-
-.customer-row:hover {
-    background: #f1f1f1;
-    cursor: pointer;
-}
-
-/* Hierarchical List styling for Task #13 */
-.order-details ul {
-    list-style-type: none;
-    padding-left: 20px;
-}
-
-.order-details li {
-    margin-bottom: 10px;
-    padding: 10px;
-    background: #fff;
-    border-left: 5px solid #b21f1f;
-    border-radius: 4px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
+.container { width: 100%; max-width: 1000px; }
+table { width: 100%; background: rgba(255,255,255,0.95); color: #333; border-radius: 15px; overflow: hidden; border-collapse: collapse; }
+th { background: #111; color: #fff; padding: 20px; text-align: left; }
+td { padding: 15px 20px; border-bottom: 1px solid #eee; }
+.customer-row:hover { background: #f9f9f9; cursor: pointer; }
+.order-details { padding: 20px 50px; border-left: 10px solid #764ba2; background: #fdfdfd; }
+.status-pill { background: #764ba2; color: white; padding: 2px 8px; border-radius: 10px; font-size: 12px; }

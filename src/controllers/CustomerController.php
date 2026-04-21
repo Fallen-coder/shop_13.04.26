@@ -3,27 +3,20 @@ require_once __DIR__ . '/../models/Customer.php';
 
 class CustomerController {
     public static function index() {
-        $rawData = Customer::getAllWithOrders();
-        $customers = [];
+        // Task #13: Check for GET parameter
+        $withOrders = isset($_GET['with-orders']) && $_GET['with-orders'] === 'full';
+        $rawData = $withOrders ? Customer::allWithOrders() : Customer::all();
 
+        $customers = [];
         foreach ($rawData as $row) {
-            $id = $row['customer_id'];
+            $id = $row['customer_id'] ?? $row['id'];
             if (!isset($customers[$id])) {
-                $customers[$id] = [
-                    'name' => $row['name'],
-                    'email' => $row['email'],
-                    'orders' => []
-                ];
+                $customers[$id] = ['name' => $row['name'], 'email' => $row['email'], 'orders' => []];
             }
-            if ($row['order_id']) {
-                $customers[$id]['orders'][] = [
-                    'id' => $row['order_id'],
-                    'date' => $row['order_date'],
-                    'status' => $row['status']
-                ];
+            if (isset($row['order_id']) && $row['order_id']) {
+                $customers[$id]['orders'][] = ['id' => $row['order_id'], 'status' => $row['status'], 'date' => $row['date']];
             }
         }
-
         // Task #11: Delegate to View
         require __DIR__ . '/../views/customers.php';
     }
