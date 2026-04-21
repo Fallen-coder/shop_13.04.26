@@ -1,34 +1,25 @@
 <?php
-require __DIR__ .'/../db/DB.php';
-require_once __DIR__. '/../src/controllers/CustomerController.php';
+// 1. Load the Composer Autoloader
 require __DIR__ . '/../vendor/autoload.php';
 
+// 2. Load Environment Variables (Task #12)
+// This ensures DB credentials aren't hardcoded
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
 $dotenv->load();
 
-$requestUri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/script.js" defer></script>
-</head>
-</head>
-<body>
-    <h1>Customer Directory</h1>
+// 3. Include Core Classes
+require __DIR__ . '/../db/DB.php';
+require_once __DIR__ . '/../src/controllers/CustomerController.php';
 
-    <div class="container">
-        <?php
-        if ($requestUri === '/customers') {
-            CustomerController::index();
-        } else {
-            echo "<p>Welcome to the shop! Visit /customers to see the list.</p>";
-        }
-        ?>
-    </div>
-</body>
-</html>
+// 4. Basic Routing logic
+// parse_url helps ignore query strings like ?with-orders=full
+$requestUri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+
+if ($requestUri === '/customers' || $requestUri === '/') {
+    // 5. Delegate to Controller (Task #11)
+    CustomerController::index();
+} else {
+    // Basic 404 handler
+    http_response_code(404);
+    echo "<h1>404 - Page Not Found</h1><p>Try going to /customers</p>";
+}
