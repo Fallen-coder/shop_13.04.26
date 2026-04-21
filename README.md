@@ -21,7 +21,6 @@ A professional PHP MVC application for managing customer directories and order t
    ```bash
    git clone https://github.com/Fallen-coder/shop_13.04.26
 
-
 2.**Install dependencies:**:
 
 
@@ -44,4 +43,3 @@ Point your local server to the public/ directory:
 
 
     php -S localhost:8000 -t public
-  
