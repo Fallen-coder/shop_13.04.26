@@ -1,0 +1,35 @@
+/* Container helps control the overall spread */
+.container {
+    width: 95%;           /* Occupy 95% of the screen width */
+    max-width: 1400px;    /* Prevents it from looking ridiculous on giant monitors */
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+table {
+    width: 100%;          /* Force the table to fill the container */
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    table-layout: auto;   /* Allows columns to adjust based on content length */
+}
+
+/* Increase padding for better readability */
+th, td {
+    padding: 18px 25px;   /* Added more horizontal and vertical padding */
+    text-align: left;
+}
+
+/* Optional: Make specific columns wider if needed */
+th:nth-child(3) {
+    width: 30%;           /* Give the Email column more space */
+}
+
+/* Font size increase for easier reading */
+td {
+    font-size: 16px;
+    color: #444;
+}
