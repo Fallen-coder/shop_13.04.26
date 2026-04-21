@@ -15,6 +15,8 @@ $requestUri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+</head>
 </head>
 <body>
     <h1>Customer Directory</h1>

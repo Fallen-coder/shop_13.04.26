@@ -33,3 +33,44 @@ td {
     font-size: 16px;
     color: #444;
 }
+
+
+/* Make the customer row look clickable */
+.customer-row {
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.customer-row:hover {
+    background-color: #e8f4f8 !important;
+}
+
+/* The hidden container styling */
+.orders-container {
+    background-color: #fcfcfc;
+}
+
+.order-details {
+    padding: 20px 50px; /* The 50px creates the 'indent' look */
+    border-left: 5px solid #009879; /* Green bar to show it belongs to the parent */
+}
+
+.order-details table {
+    width: 100%;
+    margin: 10px 0;
+    font-size: 0.9em;
+    box-shadow: none; /* Remove shadow for nested table */
+    border: 1px solid #eee;
+}
+
+.order-details th {
+    background-color: #666; /* Grey headers for sub-table */
+}
+
+.status-pill {
+    padding: 4px 8px;
+    border-radius: 4px;
+    background: #eee;
+    font-size: 0.8em;
+    text-transform: uppercase;
+}
