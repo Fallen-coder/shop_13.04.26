@@ -24,12 +24,12 @@ A professional PHP MVC application for managing customer directories and order t
 
 2.**Install dependencies:**:
 
-    ```bash
+    ```
     composer install
     ```
 3.**Environment Configuration**:
 
-    ```bash
+    ```
     cp .env.exsmple .env
     ```
 Define your DB_HOST, DB_NAME, DB_USER, and DB_PASS.
@@ -42,6 +42,6 @@ Import the provided SQL schema to your MySQL server.
 
 Point your local server to the public/ directory:
 
-    ```bash
+    ```
     php -S localhost:8000 -t public
     ```
