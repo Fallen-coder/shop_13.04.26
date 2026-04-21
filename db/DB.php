@@ -6,11 +6,12 @@ private static $pdo = null;
     // Metode savienojuma izveidei
     public static function connect() {
         if (self::$pdo === null) {
-            $host = "172.27.176.1";
-            $db   = "store_dev";
-            $user = 'ojsula';
-            $pass = 'fallen1234';
-            $charset = 'utf8mb4';
+            $host = $_ENV['DB_HOST'];
+            $db   = $_ENV['DB_NAME'];
+            $user = $_ENV['DB_USER'];
+            $pass = $_ENV['DB_PASS'];
+            $charset = $_ENV['DB_CHARSET'];
+
 
             $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
 
