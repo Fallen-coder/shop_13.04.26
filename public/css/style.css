@@ -1,76 +1,109 @@
-/* Container helps control the overall spread */
-.container {
-    width: 95%;           /* Occupy 95% of the screen width */
-    max-width: 1400px;    /* Prevents it from looking ridiculous on giant monitors */
-    margin: 0 auto;
+/* 1. The Immersive Background */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    /* This gradient uses 4 colors for a much richer look */
+    background: linear-gradient(
+        135deg,
+        #0f0c29 0%,
+        #302b63 35%,
+        #24243e 70%,
+        #764ba2 100%
+    );
+    background-attachment: fixed; /* Crucial: stops the gradient from resetting when you scroll */
+    background-size: cover;
+    padding: 40px 20px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    color: white;
 }
 
+/* 2. Glassmorphism Table Effect */
 table {
-    width: 100%;          /* Force the table to fill the container */
-    border-collapse: collapse;
-    background-color: #fff;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    border-radius: 12px;
+    width: 100%;
+    max-width: 1200px;
+    border-collapse: separate;
+    border-spacing: 0;
+
+    /* This creates the "Frosted Glass" look */
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(10px); /* Blurs the purple/blue background behind the table */
+
+    color: #2d3436;
+    border-radius: 20px;
     overflow: hidden;
-    table-layout: auto;   /* Allows columns to adjust based on content length */
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* Increase padding for better readability */
-th, td {
-    padding: 18px 25px;   /* Added more horizontal and vertical padding */
-    text-align: left;
+/* 3. Header Styling */
+th {
+    background: rgba(0, 0, 0, 0.8); /* Solid dark headers */
+    color: #fff;
+    padding: 22px;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    border: none;
 }
 
-/* Optional: Make specific columns wider if needed */
-th:nth-child(3) {
-    width: 30%;           /* Give the Email column more space */
-}
-
-/* Font size increase for easier reading */
+/* 4. Row & Interaction Styling */
 td {
-    font-size: 16px;
-    color: #444;
+    padding: 20px 25px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    transition: background 0.3s ease;
 }
 
-
-/* Make the customer row look clickable */
 .customer-row {
     cursor: pointer;
-    transition: background 0.2s;
 }
 
 .customer-row:hover {
-    background-color: #e8f4f8 !important;
+    background-color: rgba(118, 75, 162, 0.1) !important; /* Subtle purple tint on hover */
 }
 
-/* The hidden container styling */
-.orders-container {
-    background-color: #fcfcfc;
-}
-
+/* 5. The "Drawer" (Orders Section) */
 .order-details {
-    padding: 20px 50px; /* The 50px creates the 'indent' look */
-    border-left: 5px solid #009879; /* Green bar to show it belongs to the parent */
+    padding: 30px 60px;
+    background: rgba(240, 240, 255, 0.5); /* Light blue tint */
+    border-left: 8px solid #764ba2;
 }
 
+.order-details h4 {
+    color: #302b63;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+}
+
+/* Sub-table inside the drawer */
 .order-details table {
-    width: 100%;
-    margin: 10px 0;
-    font-size: 0.9em;
-    box-shadow: none; /* Remove shadow for nested table */
-    border: 1px solid #eee;
+    background: white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    border-radius: 10px;
 }
 
-.order-details th {
-    background-color: #666; /* Grey headers for sub-table */
-}
-
+/* Status Pill - Matching the theme */
 .status-pill {
-    padding: 4px 8px;
-    border-radius: 4px;
-    background: #eee;
-    font-size: 0.8em;
-    text-transform: uppercase;
+    background: linear-gradient(to right, #667eea, #764ba2);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+/* 6. Title Styling */
+h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 40px;
+    background: -webkit-linear-gradient(#fff, #cbd5e0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.2));
 }
