@@ -12,3 +12,44 @@ td { padding: 15px 20px; border-bottom: 1px solid #eee; }
 .customer-row:hover { background: #f9f9f9; cursor: pointer; }
 .order-details { padding: 20px 50px; border-left: 10px solid #764ba2; background: #fdfdfd; }
 .status-pill { background: #764ba2; color: white; padding: 2px 8px; border-radius: 10px; font-size: 12px; }
+
+
+
+/* Task #19 Navigation */
+.main-nav {
+    background: rgba(0,0,0,0.8);
+    padding: 15px;
+    border-radius: 50px;
+    margin-bottom: 30px;
+    display: flex;
+    gap: 20px;
+}
+.main-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 15px;
+    transition: 0.3s;
+}
+.main-nav a:hover {
+    background: #764ba2;
+    border-radius: 20px;
+}
+
+/* Task #18 Stats */
+.stats-container {
+    display: flex;
+    gap: 20px;
+}
+.stat-box {
+    background: white;
+    color: #333;
+    padding: 30px;
+    border-radius: 15px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.filter { margin-bottom: 20px; color: white; }
+.filter a { color: #6dd5ed; text-decoration: none; font-weight: bold; }

@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <?php include 'nav.php'; ?>
     <h1>Shop Directory</h1>
     <div class="container">
         <table>
