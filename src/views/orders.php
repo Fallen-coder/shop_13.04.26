@@ -7,7 +7,9 @@
 </head>
 <body>
     <?php include 'nav.php'; ?>
-
+    <div class="action-bar">
+    <a href="/orders/create" class="btn-create">+ Jauns pasūtījums</a>
+</div>
     <h1>Orders List</h1>
     <div class="container">
         <table>

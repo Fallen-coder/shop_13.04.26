@@ -53,3 +53,28 @@ td { padding: 15px 20px; border-bottom: 1px solid #eee; }
 
 .filter { margin-bottom: 20px; color: white; }
 .filter a { color: #6dd5ed; text-decoration: none; font-weight: bold; }
+
+
+
+.order-form {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 15px;
+    color: #333;
+    max-width: 500px;
+}
+.form-group { margin-bottom: 15px; display: flex; flex-direction: column; }
+.form-group label { margin-bottom: 5px; font-weight: bold; }
+.form-group input, .form-group select { padding: 10px; border-radius: 5px; border: 1px solid #ccc; }
+
+.btn-create {
+    display: inline-block;
+    background: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+.btn-save { background: #2196F3; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer; }
+.btn-cancel { color: #666; text-decoration: none; margin-left: 10px; }

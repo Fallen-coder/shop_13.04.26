@@ -1,17 +1,23 @@
 <?php
+require_once __DIR__ . '/../models/Order.php';
+require_once __DIR__ . '/../models/Customer.php';
+
 class OrderController {
     public static function index() {
-        $orders = DB::query("
-            SELECT
-                o.id,
-                o.order_date,
-                concat(c.Fname, ' ', c.Lname) as customer_name,
-                o.status,
-                o.arival_date  -- Fixed: changed from arrival_date to arival_date
-            FROM orders o
-            JOIN customers c ON o.customers_id = c.id
-        ");
-
+        $status = $_GET['status'] ?? null;
+        // Izmanto modeli, nevis raksta SQL šeit
+        $orders = Order::all($status);
         require __DIR__ . '/../views/orders.php';
+    }
+
+    public static function create() {
+        $customers = Customer::all();
+        require __DIR__ . '/../views/order_create.php';
+    }
+
+    public static function store() {
+        Order::save($_POST);
+        header('Location: /orders');
+        exit;
     }
 }
