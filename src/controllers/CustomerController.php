@@ -11,22 +11,32 @@ class CustomerController
 
     $currentCustomer = null;
 
-    echo "<ol>";
 
-        foreach ($result as $row)
-        {
+        echo "
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Born At</th>
+            <th>Points</th>
+        </tr>
+    ";
 
-            //iterate over all the fields
-            echo "<li>".
-            " id: " . $row["customer_id"].
-            " ||| Name: " . $row["name"].
-            " ||| email: " . $row["email"].
-            " ||| born_at: " . $row["born_at"].
-            " ||| points: " . $row["points"].
-            "</li>"."<br>";
-        }
+    foreach ($result as $row) {
+        echo "
+        <tr>
+            <td>{$row['customer_id']}</td>
+            <td>{$row['name']}</td>
+            <td>{$row['email']}</td>
+            <td>{$row['born_at']}</td>
+            <td>{$row['points']}</td>
+        </tr>
+        ";
+    }
 
-    echo "</ol>";
+    echo "</table>";
+
 
  }
 
