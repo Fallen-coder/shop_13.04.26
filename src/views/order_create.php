@@ -1,27 +1,27 @@
 <!DOCTYPE html>
-<html lang="lv">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/css/style.css">
-    <title>Jauns pasūtījums</title>
+    <title>Create New Order</title>
 </head>
 <body>
     <?php include 'nav.php'; ?>
-    <h1>Izveidot jaunu pasūtījumu</h1>
+    <h1>Create New Order</h1>
 
     <div class="container">
         <form action="/orders/create" method="POST" class="order-form">
             <div class="form-group">
-                <label>Klients:</label>
+                <label>Customer:</label>
                 <select name="customers_id" required>
                     <?php foreach ($customers as $c): ?>
-                        <option value="<?= $c['id'] ?>"><?= htmlspecialchars($c['name']) ?></option>
+                        <option value="<?= $c->id ?>"><?= htmlspecialchars($c->name) ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
 
             <div class="form-group">
-                <label>Statuss:</label>
+                <label>Status:</label>
                 <select name="status">
                     <option value="pending">Pending</option>
                     <option value="completed">Completed</option>
@@ -30,17 +30,17 @@
             </div>
 
             <div class="form-group">
-                <label>Pasūtījuma datums:</label>
+                <label>Order Date:</label>
                 <input type="date" name="order_date" value="<?= date('Y-m-d') ?>" required>
             </div>
 
             <div class="form-group">
-                <label>Plānotā ierašanās:</label>
+                <label>Arrival Date (Estimated):</label>
                 <input type="date" name="arival_date">
             </div>
 
-            <button type="submit" class="btn-save">Saglabāt pasūtījumu</button>
-            <a href="/orders" class="btn-cancel">Atcelt</a>
+            <button type="submit" class="btn-save">Create Order</button>
+            <a href="/orders" class="btn-cancel">Cancel</a>
         </form>
     </div>
 </body>

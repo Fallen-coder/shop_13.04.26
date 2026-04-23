@@ -22,21 +22,27 @@
                     <th>Arrival Date</th>
                 </tr>
             </thead>
-            <tbody>
-                <?php if (!empty($orders)): ?>
-                    <?php foreach ($orders as $row): ?>
-                        <tr>
-                            <td>#<?= $row['id'] ?></td>
-                            <td><?= $row['order_date'] ?></td>
-                            <td><strong><?= htmlspecialchars($row['customer_name'] ?? '') ?></strong></td>
-                            <td><span class="status-pill"><?= htmlspecialchars($row['status'] ?? '') ?></span></td>
-                            <td><?= $row['arival_date'] ?? '<em>TBD</em>' ?></td>
-                        </tr>
-                        <?php endforeach; ?>
-                <?php else: ?>
-                    <tr><td colspan="5">No orders found.</td></tr>
-                <?php endif; ?>
-            </tbody>
+<tbody>
+    <?php if (!empty($orders)): ?>
+        <?php foreach ($orders as $order): ?>
+            <tr>
+                <td>#<?= $order->id ?></td>
+                <td><?= $order->order_date ?></td>
+                <td><strong><?= htmlspecialchars($order->customer_name ?? '') ?></strong></td>
+                <td>
+                    <span class="status-pill">
+                        <?= htmlspecialchars($order->status ?? '') ?>
+                    </span>
+                </td>
+                <td>
+                    <?= $order->arival_date ?? '<em>TBD</em>' ?>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <tr><td colspan="5">No orders found.</td></tr>
+    <?php endif; ?>
+</tbody>
         </table>
     </div>
 </body>

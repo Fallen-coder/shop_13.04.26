@@ -1,32 +1,25 @@
 <?php
 class Order {
-    // Atlasa visus pasūtījumus ar klienta vārdu
+    public $id;
+    public $order_date;
+    public $status;
+    public $customer_name;
+
+    public function __construct($data) {
+        $this->id = $data['id'] ?? null;
+        $this->order_date = $data['order_date'] ?? null;
+        $this->status = $data['status'] ?? null;
+        $this->customer_name = $data['customer_name'] ?? null;
+    }
+
     public static function all($status = null) {
-        $sql = "SELECT
-                    o.id,
-                    o.order_date,
-                    concat(c.Fname, ' ', c.Lname) as customer_name,
-                    o.status,
-                    o.arival_date
+        $sql = "SELECT o.id, o.order_date, concat(c.Fname, ' ', c.Lname) as customer_name, o.status
                 FROM orders o
                 JOIN customers c ON o.customers_id = c.id";
 
-        if ($status) {
-            return DB::query($sql . " WHERE o.status = ?", [$status]);
-        }
-        return DB::query($sql);
-    }
+        $stmt = $status ? DB::query($sql . " WHERE o.status = ?", [$status]) : DB::query($sql);
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    // Saglabā jaunu pasūtījumu (vajadzīgs 20. uzdevumam)
-    public static function save($data) {
-        return DB::query(
-            "INSERT INTO orders (customers_id, status, order_date, arival_date) VALUES (?, ?, ?, ?)",
-            [
-                $data['customers_id'],
-                $data['status'],
-                $data['order_date'],
-                $data['arival_date']
-            ]
-        );
+        return array_map(fn($row) => new self($row), $rows);
     }
 }
