@@ -29,7 +29,7 @@ A professional PHP MVC application for managing customer directories and order t
 3.**Environment Configuration**:
 
 
-    cp .env.exsmple .env
+    copy .env.exsmple .env
 
 Define your DB_HOST, DB_NAME, DB_USER, and DB_PASS.
 
