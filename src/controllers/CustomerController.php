@@ -9,21 +9,21 @@ class CustomerController {
             $rawData = Customer::allWithOrders();
             $customers = [];
 
-            // Grupējam pasūtījumus zem katra klienta
             foreach ($rawData as $row) {
                 $cId = $row['customer_id'];
+
+                // If this customer isn't in our list yet, create the object
                 if (!isset($customers[$cId])) {
-                    $customers[$cId] = [
-                        'name' => $row['customer_name'],
-                        'orders' => []
-                    ];
+                    $customers[$cId] = new Customer($row);
                 }
+
+                // If the row contains an order, create an Order object and add it
                 if ($row['order_id']) {
-                    $customers[$cId]['orders'][] = [
+                    $customers[$cId]->orders[] = new Order([
                         'id' => $row['order_id'],
-                        'date' => $row['order_date'],
+                        'order_date' => $row['order_date'],
                         'status' => $row['status']
-                    ];
+                    ]);
                 }
             }
             require __DIR__ . '/../views/customers_full.php';
