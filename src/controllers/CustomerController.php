@@ -26,10 +26,10 @@ class CustomerController {
                     ]);
                 }
             }
-            require __DIR__ . '/../views/customers_full.php';
+            returnView('customers_full', ['customers' => $customers], 'Customer Hierarchy');
         } else {
             $customers = Customer::all();
-            require __DIR__ . '/../views/customers.php';
+            returnView('customers', ['customers' => $customers], 'Customer Directory');
         }
     }
 }
