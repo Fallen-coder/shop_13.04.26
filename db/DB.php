@@ -2,7 +2,13 @@
 class DB{
 
 private static $pdo = null;
-
+    // Helper to get the PDO instance and ensure connection
+    public static function instance() {
+        if (self::$pdo === null) {
+            self::connect();
+        }
+        return self::$pdo;
+    }
     // Metode savienojuma izveidei
     public static function connect() {
         if (self::$pdo === null) {
@@ -24,10 +30,16 @@ private static $pdo = null;
         }
     }
 
-    // Metode vaicājumu izpildei
-    public static function query($sqlQuery) {
-        self::connect(); // pārliecināmies, ka ir savienojums
-        return self::$pdo->query($sqlQuery);
+
+    public static function query($sql, $params = []) {
+        // 1. Prepare the SQL string
+        $stmt = self::instance()->prepare($sql);
+
+        // 2. Execute it passing the data array
+        $stmt->execute($params);
+
+        // 3. Return the statement so you can fetch() if needed
+        return $stmt;
     }
 
 }
