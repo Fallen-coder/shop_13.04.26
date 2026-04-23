@@ -9,7 +9,7 @@ class HomeController {
             'total_customers' => $customerData['count'],
             'total_orders'    => $orderData['count']
         ];
-
-        require __DIR__ . '/../views/home.php';
+        
+        returnView('home',['stats'=> $stats], $title = "Home - Stats");
     }
 }
