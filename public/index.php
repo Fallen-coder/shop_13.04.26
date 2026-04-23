@@ -7,6 +7,7 @@ require __DIR__ . '/../db/DB.php';
 require_once __DIR__ . '/../src/controllers/CustomerController.php';
 require_once __DIR__ . '/../src/controllers/OrderController.php';
 require_once __DIR__ . '/../src/controllers/HomeController.php';
+require_once __DIR__ . '/../src/controllers/Functions.php';
 
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
