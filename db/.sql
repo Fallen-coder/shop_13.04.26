@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `store_dev`.`orders` (
   `customers_id` INT NOT NULL,
   `order_date` DATE NOT NULL,
   `status` VARCHAR(45) NULL,
-  `arival_date` DATE NOT NULL,
+  `arival_date` DATE NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_orders_customers_idx` (`customers_id` ASC) VISIBLE,
   CONSTRAINT `fk_orders_customers`
