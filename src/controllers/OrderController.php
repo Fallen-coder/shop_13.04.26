@@ -6,13 +6,13 @@ class OrderController {
     public static function index() {
         $status = $_GET['status'] ?? null;
         $orders = Order::all($status);
-        require __DIR__ . '/../views/orders.php';
+        returnView('orders', ['orders' => $orders], 'orders');
     }
 
     public static function create() {
         // We need the list of customers for the dropdown menu
         $customers = Customer::all();
-        require __DIR__ . '/../views/order_create.php';
+        returnView('order_create', ['customers' => $customers], 'Create order');
     }
 
     public static function store() {

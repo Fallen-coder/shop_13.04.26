@@ -25,7 +25,7 @@ private static $pdo = null;
                 self::$pdo = new PDO($dsn, $user, $pass);
                 self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             } catch (PDOException $e) {
-                die("Savienojuma kļūda: " . $e->getMessage());
+                die("Connect unsucefull: " . $e->getMessage());
             }
         }
     }

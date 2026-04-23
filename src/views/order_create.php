@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="/css/style.css">
-    <title>Create New Order</title>
-</head>
-<body>
-    <?php include 'nav.php'; ?>
+<div class="layout">
     <h1>Create New Order</h1>
 
     <div class="container">
@@ -43,5 +35,4 @@
             <a href="/orders" class="btn-cancel">Cancel</a>
         </form>
     </div>
-</body>
-</html>
+</div>
