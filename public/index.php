@@ -1,4 +1,6 @@
 <?php
+session_start(); // Must be at the very top
+
 require __DIR__ . '/../vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
 $dotenv->load();
@@ -8,6 +10,7 @@ require_once __DIR__ . '/../src/controllers/CustomerController.php';
 require_once __DIR__ . '/../src/controllers/OrderController.php';
 require_once __DIR__ . '/../src/controllers/HomeController.php';
 require_once __DIR__ . '/../src/controllers/Functions.php';
+require_once __DIR__ . '/../src/controllers/AuthController.php';
 
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
@@ -19,7 +22,17 @@ switch ($path) {
     case '':
         HomeController::index();
         break;
+    case '/login':
+        ($method === 'GET') ? AuthController::showLogin() : AuthController::login();
+        break;
 
+    case '/register':
+        ($method === 'GET') ? AuthController::showRegister() : AuthController::register();
+        break;
+
+    case '/logout':
+        AuthController::logout();
+        break;
     case '/customers':
         CustomerController::index();
         break;

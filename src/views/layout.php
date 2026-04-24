@@ -7,7 +7,18 @@
     <link rel="stylesheet" href="/../../css/style.css">
 </head>
 <body>
-    <?php include __DIR__ . '/nav.php'; ?>
+    <div class="auth-bar">
+        <?php if (isset($_SESSION['user_id'])): ?>
+            <span>Welcome, <strong><?= htmlspecialchars($_SESSION['full_name']) ?></strong></span>
+            <a href="/logout">Logout</a>
+        <?php else: ?>
+            <a href="/login">Login</a>
+            <span style="color:rgba(255,255,255,0.3)">|</span>
+            <a href="/register">Register</a>
+        <?php endif; ?>
+    </div>
+
+    <?php include 'nav.php'; ?>
 
     <div class="layout">
         <?= $content ?>
