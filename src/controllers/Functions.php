@@ -19,7 +19,7 @@ function returnView($viewPath, $data = [], $title = 'My App') {
     $content = ob_get_clean();
 
     // 3. Load the layout and pass the $content and $title to it
-    include __DIR__ . '/../views/layout.php';
+    include __DIR__ . '/../views/layout/layout.php';
 }
 
 

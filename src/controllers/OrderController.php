@@ -17,13 +17,13 @@ class OrderController {
         $orders = Order::where('customers_id', $userId);
     }
 
-    returnView('orders', ['orders' => $orders], 'Orders');
+    returnView('orders/orders', ['orders' => $orders], 'Orders');
 }
 
     public static function create() {
         // We need the list of customers for the dropdown menu
         $customers = Customer::all();
-        returnView('order_create', ['customers' => $customers], 'Create order');
+        returnView('orders/order_create', ['customers' => $customers], 'Create order');
     }
 
     public static function store() {

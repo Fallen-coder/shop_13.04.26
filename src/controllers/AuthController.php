@@ -29,11 +29,11 @@ class AuthController {
             exit;
         }
 
-        returnView('login', ['error' => 'Invalid credentials.'], 'Login');
+        returnView('auth/login', ['error' => 'Invalid credentials.'], 'Login');
     }
 
     public static function showRegister() {
-        returnView('register', [], 'Create Account');
+        returnView('auth/register', [], 'Create Account');
     }
 
     public static function register() {
@@ -44,7 +44,7 @@ class AuthController {
 
         $exists = DB::query("SELECT id FROM customers WHERE email = ?", [$email])->fetch();
         if ($exists) {
-            returnView('register', ['error' => 'Email already registered.'], 'Register');
+            returnView('auth/register', ['error' => 'Email already registered.'], 'Register');
             return;
         }
 
