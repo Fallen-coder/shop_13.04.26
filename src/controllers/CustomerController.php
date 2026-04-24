@@ -28,6 +28,7 @@ class CustomerController {
             }
             returnView('customers_full', ['customers' => $customers], 'Customer Hierarchy');
         } else {
+            protect('admin');
             $customers = Customer::all();
             returnView('customers', ['customers' => $customers], 'Customer Directory');
         }

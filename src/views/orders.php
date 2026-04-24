@@ -17,21 +17,15 @@
             </thead>
             <tbody>
                 <?php if (!empty($orders)): ?>
-                    <?php foreach ($orders as $order): ?>
-                        <tr>
-                            <td>#<?= $order->id ?></td>
-                            <td><?= $order->order_date ?></td>
-                            <td><strong><?= htmlspecialchars($order->customer_name ?? '') ?></strong></td>
-                            <td>
-                                <span class="status-pill">
-                                    <?= htmlspecialchars($order->status ?? '') ?>
-                                </span>
-                            </td>
-                            <td>
-                                <?= $order->arival_date ?? '<em>TBD</em>' ?>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
+<?php foreach ($orders as $order): ?>
+            <tr>
+                <td><?= htmlspecialchars($order->id) ?></td>
+                <td><?= htmlspecialchars($order->order_date) ?></td>
+                <td><?= htmlspecialchars($order->customer_name) ?></td>
+                <td><?= htmlspecialchars($order->status) ?></td>
+                <td><?= htmlspecialchars($order->arival_date ?? 'Not set') ?></td>
+            </tr>
+        <?php endforeach; ?>
                 <?php else: ?>
                     <tr><td colspan="5">No orders found.</td></tr>
                 <?php endif; ?>
