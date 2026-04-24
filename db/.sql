@@ -48,24 +48,28 @@ CREATE TABLE IF NOT EXISTS `store_dev`.`orders` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+-- 1. Create the roles table
+CREATE TABLE roles (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL UNIQUE
+);
+
+-- 2. Insert your initial roles
+INSERT INTO roles (name) VALUES ('admin'), ('customer');
+
+-- 3. Update the customers table
+ALTER TABLE customers 
+ADD COLUMN password VARCHAR(255) AFTER Lname,
+ADD COLUMN role_id INT DEFAULT 2 AFTER password; -- Default to 'customer'
+
+-- 4. Set up the link (Foreign Key)
+ALTER TABLE customers 
+ADD CONSTRAINT fk_customer_role 
+FOREIGN KEY (role_id) REFERENCES roles(id);
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 
-INSERT INTO customers (id, Fname,Lname, email, born_at, points) VALUES
-(1, 'Barbara',' MacCaffrey', 'babara@gmail.com', '1986-03-28', 0),
-(2, 'Alex',' Dufvey', 'Alex@gmail.com', '1986-03-28', 0),
-(3, 'Epstein',' Montvids', 'Epstein@gmail.com', '1986-03-28', 0),
-(4, 'Rodolf',' Reindier', 'Rodolf@gmail.com', '1999-03-28', 0);
-
-
-INSERT INTO orders (id, customers_id, order_date, status, arival_date) VALUES
-(1, 1, '2026-04-07', 'processing', '2026-04-12'),
-(2, 1, '2025-04-07', 'shipped', '2025-04-12'),
-(3, 2, '2026-04-07', 'processing', '2026-04-12'),
-(4, 2, '2025-04-07', 'shipped', '2025-04-12'),
-(5, 3, '2026-04-07', 'processing', '2026-04-12'),
-(6, 3, '2025-04-07', 'shipped', '2025-04-12'),
-(7, 3, '2026-04-07', 'processing', '2026-04-12');
